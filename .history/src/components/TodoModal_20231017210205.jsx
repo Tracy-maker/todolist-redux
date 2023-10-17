@@ -43,8 +43,8 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         );
         toast.success("Task added successfully");
         setModalOpen(false);
-      } else {
-        toast.error("Title shouldn't be empty");
+      }else {
+        toast.error("Title shouldn't be empty")
       }
       if (type === "update") {
         if (todo.taskTitle !== taskTitle || todo.status !== status) {

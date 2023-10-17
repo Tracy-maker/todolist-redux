@@ -1,6 +1,5 @@
 import { Toaster } from "react-hot-toast";
 import TaskHeader from "./components/TaskHeader";
-import TodoList from "./components/TaskList";
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
         </div>
         <div>
           <TaskHeader />
-          <TodoList />
         </div>
       </div>
 
