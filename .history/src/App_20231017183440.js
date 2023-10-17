@@ -7,7 +7,7 @@ function App() {
       <div>
         <div>TODO List</div>
         <div>
-          <TaskHeader />
+      <TaskHeader/>
         </div>
       </div>
 

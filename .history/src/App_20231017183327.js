@@ -3,11 +3,12 @@ import TaskHeader from "./components/TaskHeader";
 
 function App() {
   return (
-    <>
+    
       <div>
-        <div>TODO List</div>
-        <div>
-          <TaskHeader />
+        <PageTitle>TODO List</PageTitle>
+        <div >
+          <AppHeader />
+        
         </div>
       </div>
 
@@ -19,7 +20,7 @@ function App() {
           },
         }}
       />
-    </>
+    
   );
 }
 

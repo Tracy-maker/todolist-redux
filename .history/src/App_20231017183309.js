@@ -1,16 +1,15 @@
-import { Toaster } from "react-hot-toast";
 import TaskHeader from "./components/TaskHeader";
 
 function App() {
   return (
-    <>
+    
       <div>
-        <div>TODO List</div>
-        <div>
-          <TaskHeader />
+        <PageTitle>TODO List</PageTitle>
+        <div >
+          <AppHeader />
+        
         </div>
       </div>
-
       <Toaster
         position="bottom-right"
         toastOptions={{
@@ -19,7 +18,7 @@ function App() {
           },
         }}
       />
-    </>
+    
   );
 }
 

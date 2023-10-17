@@ -1,21 +1,20 @@
-import { Toaster } from "react-hot-toast";
 import TaskHeader from "./components/TaskHeader";
 
 function App() {
   return (
     <>
-      <div>
-        <div>TODO List</div>
-        <div>
-          <TaskHeader />
+      <div className="container">
+        <PageTitle>TODO List</PageTitle>
+        <div className={styles.app__wrapper}>
+          <AppHeader />
+          <AppContent />
         </div>
       </div>
-
       <Toaster
         position="bottom-right"
         toastOptions={{
           style: {
-            fontSize: "1.4rem",
+            fontSize: '1.4rem',
           },
         }}
       />
