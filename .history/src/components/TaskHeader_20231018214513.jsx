@@ -24,7 +24,6 @@ function TaskHeader() {
       <select
         id="status"
         onChange={(e) => updateFilter(e)}
-        value={filterStatus}
         className="select select-info max-w-xs"
       >
         <option disabled selected>

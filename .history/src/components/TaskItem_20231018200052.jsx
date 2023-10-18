@@ -56,7 +56,7 @@ function TaskItem({ todo }) {
                   type="checkbox"
                   checked={checked}
                   className="checkbox"
-                  onChange={handleCheck}
+                  handleCheck={handleCheck}
                 />
               </label>
             </th>

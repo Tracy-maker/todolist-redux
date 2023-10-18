@@ -6,14 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 function TaskHeader() {
   const [modalOpen, setModalOpen] = useState(false);
-  const initialFilterStatus = useSelector((state) => state.todo.filterStatus);
-  const [filterStatus, setFilterStatus] = useState(initialFilterStatus);
-  const dispatch = useDispatch();
-
-  const updateFilter = (e) => {
-    setFilterStatus(e.target.value);
-    dispatch(setFilterStatus(e.target.value));
-  };
+  const initialFilterStatus= useSelector((state)=> state.todo.filterStatus);
+  const [filterStatus,setFilterStatus]= useState(initialFilterStatus);
+  const dispatch= useDispatch();
 
   return (
     <div className="flex justify-between content-center py-2  mx-10">
@@ -21,12 +16,7 @@ function TaskHeader() {
         Add new task
         <AiOutlinePlus className="ml-2" size={18} />
       </button>
-      <select
-        id="status"
-        onChange={(e) => updateFilter(e)}
-        value={filterStatus}
-        className="select select-info max-w-xs"
-      >
+      <select className="select select-info max-w-xs">
         <option disabled selected>
           Select Task Status
         </option>

@@ -12,7 +12,7 @@ function TaskHeader() {
 
   const updateFilter = (e) => {
     setFilterStatus(e.target.value);
-    dispatch(setFilterStatus(e.target.value));
+    dispatch(setFilterStatus(e.target.value)); 
   };
 
   return (
@@ -21,12 +21,7 @@ function TaskHeader() {
         Add new task
         <AiOutlinePlus className="ml-2" size={18} />
       </button>
-      <select
-        id="status"
-        onChange={(e) => updateFilter(e)}
-        value={filterStatus}
-        className="select select-info max-w-xs"
-      >
+      <select className="select select-info max-w-xs">
         <option disabled selected>
           Select Task Status
         </option>

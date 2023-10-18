@@ -13,11 +13,9 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
-      setTaskDescription(todo.taskDescription);
       setStatus(todo.status);
     } else {
       setTaskTitle("");
-      setTaskDescription("");
       setStatus("incomplete");
     }
   }, [type, todo, modalOpen]);

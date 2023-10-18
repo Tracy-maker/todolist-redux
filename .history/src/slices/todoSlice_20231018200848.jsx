@@ -58,11 +58,15 @@ export const todoSlice = createSlice({
       const todoList = window.localStorage.getItem("todoList");
       if (todoList) {
         const todoListArr = JSON.parse(todoList);
-        const updatedTodoListArr = todoListArr.filter(
-          (todo) => todo.id !== action.payload
-        );
+        todoListArr.forEach((todo, index) => {
+          if (todo.id === action.payload) {
+            todoListArr.filter((todo) => {
+              return todo.id !== action.payload;
+            });
+          }
+        });
         window.localStorage.setItem("todoListArr", JSON.stringify(todoListArr));
-        state.todoList = updatedTodoListArr;
+        state.todoList = todoListArr;
       }
     },
     updateFilterStatus: (state, action) => {

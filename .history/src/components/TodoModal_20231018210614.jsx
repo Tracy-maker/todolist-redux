@@ -13,11 +13,9 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
-      setTaskDescription(todo.taskDescription);
       setStatus(todo.status);
     } else {
       setTaskTitle("");
-      setTaskDescription("");
       setStatus("incomplete");
     }
   }, [type, todo, modalOpen]);
@@ -30,10 +28,6 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       return;
     }
 
-    if (taskDescription === "") {
-      toast.error("Please enter a description");
-      return;
-    }
 
     if (type === "add") {
       dispatch(
@@ -72,7 +66,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             >
               ✕
             </label>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
               <h1 className="font-bold text-xl mb-8">
                 {type === "add" ? "Add" : "Update"} TODO
               </h1>

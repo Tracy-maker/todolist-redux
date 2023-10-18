@@ -13,52 +13,46 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
-      setTaskDescription(todo.taskDescription);
       setStatus(todo.status);
     } else {
       setTaskTitle("");
-      setTaskDescription("");
       setStatus("incomplete");
     }
   }, [type, todo, modalOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (taskTitle === "") {
-      toast.error("Please enter a title");
+    if (title === '') {
+      toast.error('Please enter a title');
       return;
     }
-
-    if (taskDescription === "") {
-      toast.error("Please enter a description");
-      return;
-    }
-
-    if (type === "add") {
-      dispatch(
-        addTodo({
-          id: uuid(),
-          taskTitle,
-          taskDescription,
-          status,
-          time: new Date().toLocaleString(),
-        })
-      );
-      toast.success("Task added successfully");
-    } else if (type === "update") {
-      if (todo.taskTitle !== taskTitle || todo.status !== status) {
-        dispatch(updateTodo({ ...todo, taskTitle, taskDescription, status }));
-        toast.success("Task Updated successfully");
-      } else {
-        toast.error("No changes made");
-        return;
+    if (title && status) {
+      if (type === 'add') {
+        dispatch(
+          addTodo({
+            id: uuid(),
+            title,
+            status,
+            time: new Date().toLocaleString(),
+          })
+        );
+        toast.success('Task added successfully');
       }
+      if (type === 'update') {
+        if (todo.title !== title || todo.status !== status) {
+          dispatch(updateTodo({ ...todo, title, status }));
+          toast.success('Task Updated successfully');
+        } else {
+          toast.error('No changes made');
+          return;
+        }
+      }
+      setModalOpen(false);
     }
-
-    setModalOpen(false);
   };
 
+
+  
   return (
     <>
       {modalOpen && (
@@ -72,7 +66,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             >
               ✕
             </label>
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
               <h1 className="font-bold text-xl mb-8">
                 {type === "add" ? "Add" : "Update"} TODO
               </h1>
@@ -115,12 +109,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 <button type="submit" className="mr-6">
                   {type === "add" ? "Add Task" : "Update Task"}
                 </button>
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => setModalOpen(false)}
-                >
-                  Cancel
-                </button>
+                <button className="btn btn-secondary" onClick={() => setModalOpen(false)}>Cancel</button>
               </div>
             </form>
           </div>

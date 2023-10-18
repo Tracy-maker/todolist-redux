@@ -61,8 +61,10 @@ export const todoSlice = createSlice({
         const updatedTodoListArr = todoListArr.filter(
           (todo) => todo.id !== action.payload
         );
+
+
         window.localStorage.setItem("todoListArr", JSON.stringify(todoListArr));
-        state.todoList = updatedTodoListArr;
+        state.todoList = updateTodoListArr;
       }
     },
     updateFilterStatus: (state, action) => {

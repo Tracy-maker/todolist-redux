@@ -8,16 +8,13 @@ function TodoList() {
   sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
   console.log(todoList);
 
-  const filteredTodoList = sortedTodoList.filter((item) => {
-    if (filterStatus === "all") {
-      return true;
-    }
-    return item.status === filterStatus;
-  });
+  const filteredTodoList = sortedTodoList.filter((item)=>{
+    if(filterStatus === 'all')
+  })
 
   return (
     <div className="mt-6">
-      {filteredTodoList && filteredTodoList.length > 0
+      {sortedTodoList && sortedTodoList.length > 0
         ? sortedTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
         : "No todo task"}
     </div>

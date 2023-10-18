@@ -12,12 +12,12 @@ function TodoList() {
     if (filterStatus === "all") {
       return true;
     }
-    return item.status === filterStatus;
+    return item.status ===filterStatus
   });
 
   return (
     <div className="mt-6">
-      {filteredTodoList && filteredTodoList.length > 0
+      {sortedTodoList && sortedTodoList.length > 0
         ? sortedTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
         : "No todo task"}
     </div>

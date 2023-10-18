@@ -9,7 +9,7 @@ function TodoList() {
   console.log(todoList);
 
   const filteredTodoList = sortedTodoList.filter((item) => {
-    if (filterStatus === "all") {
+    if (filterStatus === "all tasks") {
       return true;
     }
     return item.status === filterStatus;
