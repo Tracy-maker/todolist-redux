@@ -16,11 +16,8 @@ function TaskItem({ todo }) {
 
   useEffect(() => {
     if (todo.status === "complete") {
-      setChecked(true);
-    } else {
-      setChecked(false);
     }
-  }, [todo.status]);
+  });
 
   const handleCheck = () => {
     setChecked(!checked);

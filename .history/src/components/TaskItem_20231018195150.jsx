@@ -1,5 +1,5 @@
 import { format, isValid, parse } from "date-fns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TodoModal from "./TodoModal";
 import { useDispatch } from "react-redux";
 import { deleteTodo, updateTodo } from "../slices/todoSlice";
@@ -13,15 +13,6 @@ function TaskItem({ todo }) {
   const formattedDate = isValid(parsedDate)
     ? format(parsedDate, "p, MM/dd/yyyy")
     : "Invalid Date";
-
-  useEffect(() => {
-    if (todo.status === "complete") {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [todo.status]);
-
   const handleCheck = () => {
     setChecked(!checked);
     dispatch(
@@ -54,7 +45,6 @@ function TaskItem({ todo }) {
               <label>
                 <input
                   type="checkbox"
-                  checked={checked}
                   className="checkbox"
                   handleCheck={handleCheck}
                 />

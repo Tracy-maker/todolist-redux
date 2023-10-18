@@ -14,13 +14,11 @@ function TaskItem({ todo }) {
     ? format(parsedDate, "p, MM/dd/yyyy")
     : "Invalid Date";
 
-  useEffect(() => {
-    if (todo.status === "complete") {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [todo.status]);
+    useEffect(()=>{
+        if(todo.status==='complete'){
+
+        }
+    })
 
   const handleCheck = () => {
     setChecked(!checked);

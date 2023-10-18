@@ -1,37 +1,18 @@
 import { format, isValid, parse } from "date-fns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TodoModal from "./TodoModal";
 import { useDispatch } from "react-redux";
-import { deleteTodo, updateTodo } from "../slices/todoSlice";
-import toast from "react-hot-toast";
 
 function TaskItem({ todo }) {
   const dispatch = useDispatch();
-  const [checked, setChecked] = useState(false);
+  const [checked,setChecked]= useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const parsedDate = parse(todo.time, "dd/MM/yyyy, HH:mm:ss", new Date());
   const formattedDate = isValid(parsedDate)
     ? format(parsedDate, "p, MM/dd/yyyy")
     : "Invalid Date";
-
-  useEffect(() => {
-    if (todo.status === "complete") {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [todo.status]);
-
-  const handleCheck = () => {
-    setChecked(!checked);
-    dispatch(
-      updateTodo({ ...todo, status: checked ? "incomplete" : "complete" })
-    );
-  };
-  const handleDelete = () => {
-    dispatch(deleteTodo(todo.id));
-    toast.success("Todo Deleted Successfully'");
-  };
+  const handleCheck = ()=>{}
+  const handleDelete = () => {};
   const handleUpdate = () => {
     setUpdateModalOpen(true);
   };
@@ -52,12 +33,7 @@ function TaskItem({ todo }) {
           <tr>
             <th>
               <label>
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  className="checkbox"
-                  handleCheck={handleCheck}
-                />
+                <input type="checkbox" className="checkbox" />
               </label>
             </th>
             <td>
