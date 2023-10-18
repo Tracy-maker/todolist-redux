@@ -19,13 +19,10 @@ function TaskHeader() {
 
   return (
     <div className="flex justify-between content-center py-2  mx-10">
-      <button
-        onClick={() => setModalOpen(true)}
-        className="btn btn-primary flex items-center"
-      >
-        Add new task <AiOutlinePlus className="ml-2" size={18} />
-      </button>
-      <label htmlFor="status">Filter by Status:</label>
+    
+    const initialFilterStatus = useSelector((state) => state.todo.filterStatus);
+const [filterStatus, setFilterStatus] = useState(initialFilterStatus || "all");
+
       <select
         id="status"
         onChange={(e) => updateFilter(e)}

@@ -10,6 +10,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const [status, setStatus] = useState("incomplete");
   const [taskDescription, setTaskDescription] = useState("");
 
+
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
@@ -29,7 +30,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       toast.error("Please enter a title");
       return;
     }
-
+    
     if (type === "add") {
       dispatch(
         addTodo({
@@ -50,10 +51,8 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         return;
       }
     }
-    setTaskTitle("");
-    setTaskDescription("");
-    setStatus("incomplete");
-    setModalOpen(false);
+      setModalOpen(false);
+    }
   };
 
   return (

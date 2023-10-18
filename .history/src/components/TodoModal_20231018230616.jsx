@@ -50,6 +50,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         return;
       }
     }
+
     setTaskTitle("");
     setTaskDescription("");
     setStatus("incomplete");

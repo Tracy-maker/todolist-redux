@@ -1,19 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const getInitialTodo = () => {
-  try {
-    const localTodoList = window.localStorage.getItem("todoList");
-    if (localTodoList) {
-      const parsedList = JSON.parse(localTodoList);
-
-      return Array.isArray(parsedList) ? parsedList : [];
-    }
-    window.localStorage.setItem("todoList", JSON.stringify([]));
-    return [];
-  } catch (error) {
-    console.error("Error accessing or parsing localStorage:", error);
-    return [];
+  const localTodoList = window.localStorage.getItem("todoList");
+  if (localTodoList) {
+    return JSON.parse(localTodoList);
   }
+  window.localStorage.setItem("todoList", JSON.stringify([]));
+  return [];
 };
 
 const initialValue = {
@@ -30,12 +23,18 @@ export const todoSlice = createSlice({
       const todoList = window.localStorage.getItem("todoList");
       if (todoList) {
         const todoListArr = JSON.parse(todoList);
-        todoListArr.push(action.payload);
+        todoListArr.push({
+          ...action.payload,
+        });
         window.localStorage.setItem("todoList", JSON.stringify(todoListArr));
       } else {
         window.localStorage.setItem(
           "todoList",
-          JSON.stringify([action.payload])
+          JSON.stringify([
+            {
+              ...action.payload,
+            },
+          ])
         );
       }
     },
@@ -44,18 +43,17 @@ export const todoSlice = createSlice({
       const todoList = window.localStorage.getItem("todoList");
       if (todoList) {
         const todoListArr = JSON.parse(todoList);
-        const updatedTodoListArr = todoListArr.map((todo) =>
-          todo.id === action.payload.id ? { ...todo, ...action.payload } : todo
-        );
-
-        window.localStorage.setItem(
-          "todoList",
-          JSON.stringify(updatedTodoListArr)
-        );
-        return { ...state, todoList: updatedTodoListArr };
+        todoListArr.forEach((todo) => {
+          if (todo.id === action.payload.id) {
+            todo.status = action.payload.status;
+            todo.title = action.payload.title;
+            todo.description = action.payload.description;
+          }
+        });
+        window.localStorage.setItem("todoList", JSON.stringify(todoListArr));
+        state.todoList = [...todoListArr];
       }
     },
-
     deleteTodo: (state, action) => {
       const todoList = window.localStorage.getItem("todoList");
       if (todoList) {
@@ -63,15 +61,13 @@ export const todoSlice = createSlice({
         const updatedTodoListArr = todoListArr.filter(
           (todo) => todo.id !== action.payload
         );
-
         window.localStorage.setItem(
-          "todoList",
+          "todoListArr",
           JSON.stringify(updatedTodoListArr)
         );
-        return { ...state, todoList: updatedTodoListArr };
+        state.todoList = updatedTodoListArr;
       }
     },
-
     updateFilterStatus: (state, action) => {
       state.filterStatus = action.payload;
     },

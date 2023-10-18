@@ -25,7 +25,7 @@ function TaskHeader() {
       >
         Add new task <AiOutlinePlus className="ml-2" size={18} />
       </button>
-      <label htmlFor="status">Filter by Status:</label>
+
       <select
         id="status"
         onChange={(e) => updateFilter(e)}

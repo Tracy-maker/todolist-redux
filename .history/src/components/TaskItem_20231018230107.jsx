@@ -39,15 +39,15 @@ function TaskItem({ todo }) {
   return (
     <div className="overflow-x-auto">
       <table className="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Date</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
+      <thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Date</th>
+    <th scope="col"></th>
+  </tr>
+</thead>
         <tbody>
           <tr>
             <th>

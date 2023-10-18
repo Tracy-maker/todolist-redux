@@ -5,7 +5,7 @@ const getInitialTodo = () => {
     const localTodoList = window.localStorage.getItem("todoList");
     if (localTodoList) {
       const parsedList = JSON.parse(localTodoList);
-
+      // Check if parsedList is an array
       return Array.isArray(parsedList) ? parsedList : [];
     }
     window.localStorage.setItem("todoList", JSON.stringify([]));
@@ -15,6 +15,7 @@ const getInitialTodo = () => {
     return [];
   }
 };
+
 
 const initialValue = {
   filterStatus: "all",
@@ -47,14 +48,12 @@ export const todoSlice = createSlice({
         const updatedTodoListArr = todoListArr.map((todo) =>
           todo.id === action.payload.id ? { ...todo, ...action.payload } : todo
         );
-
-        window.localStorage.setItem(
-          "todoList",
-          JSON.stringify(updatedTodoListArr)
-        );
+    
+        window.localStorage.setItem("todoList", JSON.stringify(updatedTodoListArr));
         return { ...state, todoList: updatedTodoListArr };
       }
     },
+    
 
     deleteTodo: (state, action) => {
       const todoList = window.localStorage.getItem("todoList");

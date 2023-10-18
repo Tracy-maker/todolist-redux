@@ -25,8 +25,13 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!taskTitle) {
+    if (taskTitle === "") {
       toast.error("Please enter a title");
+      return;
+    }
+
+    if (taskDescription === "") {
+      toast.error("Please enter a description");
       return;
     }
 
@@ -42,17 +47,15 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       );
       toast.success("Task added successfully");
     } else if (type === "update") {
-      if (todo.title !== taskTitle || todo.status !== status) {
+      if (todo.taskTitle !== taskTitle || todo.status !== status) {
         dispatch(updateTodo({ ...todo, taskTitle, taskDescription, status }));
-        toast.success("Task updated successfully");
+        toast.success("Task Updated successfully");
       } else {
         toast.error("No changes made");
         return;
       }
     }
-    setTaskTitle("");
-    setTaskDescription("");
-    setStatus("incomplete");
+
     setModalOpen(false);
   };
 

@@ -41,23 +41,24 @@ function TaskItem({ todo }) {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Date</th>
-            <th scope="col"></th>
+            <th></th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th>
               <label>
-                <input
-                  type="checkbox"
-                  defaultChecked={checked}
-                  className="checkbox"
-                  onChange={handleCheck}
-                />
+              <input
+  type="checkbox"
+  defaultChecked={checked}
+  className="checkbox"
+  onChange={handleCheck}
+/>
+
               </label>
             </th>
             <td>
@@ -71,7 +72,11 @@ function TaskItem({ todo }) {
             <td>{formattedDate}</td>
 
             <th>
-              <button onClick={handleDelete} className="btn btn-ghost btn-xs">
+              <button
+                onClick={handleDelete}
+                onKeyDown={handleDelete}
+                className="btn btn-ghost btn-xs"
+              >
                 Delete
               </button>
             </th>

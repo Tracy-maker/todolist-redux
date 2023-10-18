@@ -41,11 +41,11 @@ function TaskItem({ todo }) {
       <table className="table">
         <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Date</th>
-            <th scope="col"></th>
+            <th></th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -71,9 +71,10 @@ function TaskItem({ todo }) {
             <td>{formattedDate}</td>
 
             <th>
-              <button onClick={handleDelete} className="btn btn-ghost btn-xs">
-                Delete
-              </button>
+            <button onClick={handleDelete} className="btn btn-ghost btn-xs">
+  Delete
+</button>
+
             </th>
             <th>
               <button

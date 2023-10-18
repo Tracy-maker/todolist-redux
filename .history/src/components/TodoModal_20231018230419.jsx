@@ -10,6 +10,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const [status, setStatus] = useState("incomplete");
   const [taskDescription, setTaskDescription] = useState("");
 
+
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
@@ -29,31 +30,31 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       toast.error("Please enter a title");
       return;
     }
-
-    if (type === "add") {
-      dispatch(
-        addTodo({
-          id: uuid(),
-          taskTitle,
-          taskDescription,
-          status,
-          time: new Date().toLocaleString(),
-        })
-      );
-      toast.success("Task added successfully");
-    } else if (type === "update") {
-      if (todo.title !== taskTitle || todo.status !== status) {
-        dispatch(updateTodo({ ...todo, taskTitle, taskDescription, status }));
-        toast.success("Task updated successfully");
-      } else {
-        toast.error("No changes made");
-        return;
+    
+    if (taskTitle && status) {
+      if (type === "add") {
+        dispatch(
+          addTodo({
+            id: uuid(),
+            taskTitle,
+            taskDescription,
+            status,
+            time: new Date().toLocaleString(),
+          })
+        );
+        toast.success("Task added successfully");
       }
+      if (type === "update") {
+        if (todo.title !== taskTitle || todo.status !== status) {
+          dispatch(updateTodo({ ...todo, taskTitle, taskDescription, status }));
+          toast.success("Task Updated successfully");
+        } else {
+          toast.error("No changes made");
+          return;
+        }
+      }
+      setModalOpen(false);
     }
-    setTaskTitle("");
-    setTaskDescription("");
-    setStatus("incomplete");
-    setModalOpen(false);
   };
 
   return (

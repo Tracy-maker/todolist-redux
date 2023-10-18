@@ -4,14 +4,12 @@ const getInitialTodo = () => {
   try {
     const localTodoList = window.localStorage.getItem("todoList");
     if (localTodoList) {
-      const parsedList = JSON.parse(localTodoList);
-
-      return Array.isArray(parsedList) ? parsedList : [];
+      return JSON.parse(localTodoList);
     }
     window.localStorage.setItem("todoList", JSON.stringify([]));
     return [];
   } catch (error) {
-    console.error("Error accessing or parsing localStorage:", error);
+    console.error("Error parsing localStorage:", error);
     return [];
   }
 };
@@ -47,14 +45,12 @@ export const todoSlice = createSlice({
         const updatedTodoListArr = todoListArr.map((todo) =>
           todo.id === action.payload.id ? { ...todo, ...action.payload } : todo
         );
-
-        window.localStorage.setItem(
-          "todoList",
-          JSON.stringify(updatedTodoListArr)
-        );
+    
+        window.localStorage.setItem("todoList", JSON.stringify(updatedTodoListArr));
         return { ...state, todoList: updatedTodoListArr };
       }
     },
+    
 
     deleteTodo: (state, action) => {
       const todoList = window.localStorage.getItem("todoList");
