@@ -8,16 +8,16 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [taskTitle, setTaskTitle] = useState("");
   const [status, setStatus] = useState("incomplete");
- 
+  const [taskDescription, setTaskDescription] = useState("");
 
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
-   
+      setTaskDescription(todo.taskDescription);
       setStatus(todo.status);
     } else {
       setTaskTitle("");
-    
+      setTaskDescription("");
       setStatus("incomplete");
     }
   }, [type, todo, modalOpen]);
@@ -35,14 +35,15 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         addTodo({
           id: uuid(),
           taskTitle,
+          taskDescription,
           status,
           time: new Date().toLocaleString(),
         })
       );
       toast.success("Task added successfully");
     } else if (type === "update") {
-      if (todo.taskTitle !== taskTitle || todo.status !== status) {
-        dispatch(updateTodo({ ...todo, taskTitle,  status }));
+      if (todo.title !== taskTitle || todo.status !== status) {
+        dispatch(updateTodo({ ...todo, taskTitle, taskDescription, status }));
         toast.success("Task updated successfully");
       } else {
         toast.error("No changes made");
@@ -50,7 +51,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       }
     }
     setTaskTitle("");
-  
+    setTaskDescription("");
     setStatus("incomplete");
     setModalOpen(false);
   };
@@ -83,7 +84,18 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                     className="border-white input mx-4"
                   />
                 </label>
-      
+                <label htmlFor="description" className="pb-12 block">
+                  Description:
+                  <input
+                    type="text"
+                    id="taskdescription"
+                    value={taskDescription}
+                    onChange={(e) => {
+                      setTaskDescription(e.target.value);
+                    }}
+                    className="border-white input mx-4"
+                  />
+                </label>
 
                 <label htmlFor="type" className="pb-8 block">
                   Status:
