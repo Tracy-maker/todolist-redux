@@ -7,8 +7,9 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-    },
+    extend: { backgroundColor: {
+      'blue-violet': '#8A2BE2', // Example hex color code
+    },},
   },
   plugins: [require("daisyui")],
 };

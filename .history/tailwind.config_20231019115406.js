@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        "blue-violet": "#8A2BE2", // Example hex color code
+      },
     },
   },
   plugins: [require("daisyui")],

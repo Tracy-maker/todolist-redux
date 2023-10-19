@@ -4,7 +4,7 @@ import TodoList from "./components/TaskList";
 
 function App() {
   return (
-    <div>
+    <div className="bg-gray-200">
       <div class=" w-full max-w-4xl mx-auto">
         <div class="title inline-block w-full font-poppins text-4xl font-bold uppercase text-center mx-auto mt-8 mb-6 text-black-1 sm:text-3xl">
           TODO List
