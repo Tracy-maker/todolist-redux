@@ -16,13 +16,9 @@ function TodoList() {
 
   return (
     <div className="mt-6 ">
-      {filteredTodoList && filteredTodoList.length > 0 ? (
-        filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
-      ) : (
-        <div className="flex items-center justify-center h-20 text-2xl">
-          " No todo task 🫣 "
-        </div>
-      )}
+      {filteredTodoList && filteredTodoList.length > 0
+        ? filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
+        : <div className="flex items-center justify-center h-16">"No todo task"</div>}
     </div>
   );
 }

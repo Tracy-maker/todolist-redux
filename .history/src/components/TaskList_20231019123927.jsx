@@ -19,9 +19,7 @@ function TodoList() {
       {filteredTodoList && filteredTodoList.length > 0 ? (
         filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
       ) : (
-        <div className="flex items-center justify-center h-20 text-2xl">
-          " No todo task 🫣 "
-        </div>
+        "No todo task"
       )}
     </div>
   );

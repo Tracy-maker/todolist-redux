@@ -20,7 +20,7 @@ function TodoList() {
         filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo} />)
       ) : (
         <div className="flex items-center justify-center h-20 text-2xl">
-          " No todo task 🫣 "
+          "No todo task"
         </div>
       )}
     </div>
