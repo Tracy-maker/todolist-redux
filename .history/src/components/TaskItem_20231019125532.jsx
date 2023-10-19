@@ -44,7 +44,7 @@ function TaskItem({ todo }) {
             <th scope="col"></th>
             <th scope="col">Title</th>
             <th scope="col">Date</th>
-            <th scope="col" className="items-center justify-center flex ">Customized Buttons 🤩</th>
+            <th scope="col" className="items-center justify-center">Customized Buttons 🤩</th>
           </tr>
         </thead>
         <tbody>
@@ -69,12 +69,12 @@ function TaskItem({ todo }) {
 
             <td >{formattedDate}</td>
 
-            <th className="items-center justify-center flex gap-6">
+            <th>
               <button onClick={handleDelete} className="btn btn-ghost btn-xs">
                 Delete
               </button>
-            
-            
+            </th>
+            <th>
               <button
                 onClick={() => handleUpdate()}
                 className="btn btn-ghost btn-xs"
