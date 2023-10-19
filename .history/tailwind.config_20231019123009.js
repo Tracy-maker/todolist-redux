@@ -7,7 +7,14 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      padding: {
+        4: "1rem", 
+      },
+      width: {
+        auto: "auto", /
+      },
+    },
   },
   plugins: [require("daisyui")],
 };

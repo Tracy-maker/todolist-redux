@@ -59,7 +59,7 @@ function TaskItem({ todo }) {
                 />
               </label>
             </th>
-            <td >
+            <td>
               <div className="flex items-center space-x-3">
                 <div>
                   <div className="font-bold w-52 font-serif break-words leading-6">{todo.taskTitle}</div>
@@ -67,7 +67,7 @@ function TaskItem({ todo }) {
               </div>
             </td>
 
-            <td >{formattedDate}</td>
+            <td className="text-left">{formattedDate}</td>
 
             <th>
               <button onClick={handleDelete} className="btn btn-ghost btn-xs">
