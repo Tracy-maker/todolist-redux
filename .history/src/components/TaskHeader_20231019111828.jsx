@@ -3,7 +3,6 @@ import TodoModal from "./TodoModal";
 import { useState } from "react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFilterStatus } from "../slices/todoSlice";
 
 function TaskHeader() {
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ function TaskHeader() {
 
   const updateFilter = (e) => {
     setFilterStatus(e.target.value);
-    dispatch(updateFilterStatus(e.target.value));
+    dispatch(setFilterStatus(e.target.value));
   };
 
   return (
