@@ -47,8 +47,6 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         return;
       }
     }
-    setTaskTitle("");
-    setStatus("incomplete");
     setModalOpen(false);
   };
 

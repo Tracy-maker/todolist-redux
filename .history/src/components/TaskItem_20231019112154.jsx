@@ -53,7 +53,7 @@ function TaskItem({ todo }) {
               <label>
                 <input
                   type="checkbox"
-                  checked={checked}
+                  defaultChecked={checked}
                   className="checkbox"
                   onChange={handleCheck}
                 />
@@ -66,7 +66,7 @@ function TaskItem({ todo }) {
                 </div>
               </div>
             </td>
-
+           
             <td>{formattedDate}</td>
 
             <th>
@@ -77,6 +77,7 @@ function TaskItem({ todo }) {
             <th>
               <button
                 onClick={() => handleUpdate()}
+                onKeyDown={() => handleUpdate()}
                 className="btn btn-ghost btn-xs"
               >
                 Edit
@@ -89,7 +90,7 @@ function TaskItem({ todo }) {
         type="update"
         modalOpen={updateModalOpen}
         setModalOpen={setUpdateModalOpen}
-        todo={todo}
+        todo
       />
     </div>
   );

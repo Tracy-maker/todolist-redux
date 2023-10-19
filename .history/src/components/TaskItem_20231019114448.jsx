@@ -66,7 +66,7 @@ function TaskItem({ todo }) {
                 </div>
               </div>
             </td>
-
+           
             <td>{formattedDate}</td>
 
             <th>
@@ -89,7 +89,7 @@ function TaskItem({ todo }) {
         type="update"
         modalOpen={updateModalOpen}
         setModalOpen={setUpdateModalOpen}
-        todo={todo}
+        todo
       />
     </div>
   );

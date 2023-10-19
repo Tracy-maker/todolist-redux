@@ -89,7 +89,7 @@ function TaskItem({ todo }) {
         type="update"
         modalOpen={updateModalOpen}
         setModalOpen={setUpdateModalOpen}
-        todo={todo}
+        todo
       />
     </div>
   );

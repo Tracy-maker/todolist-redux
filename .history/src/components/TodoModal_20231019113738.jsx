@@ -47,8 +47,6 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         return;
       }
     }
-    setTaskTitle("");
-    setStatus("incomplete");
     setModalOpen(false);
   };
 
@@ -73,7 +71,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   Title:
                   <input
                     type="text"
-                    id="taskTitle"
+                    id="tasktitle"
                     value={taskTitle}
                     onChange={(e) => setTaskTitle(e.target.value)}
                     className="border-white input mx-4"
